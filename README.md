@@ -1,6 +1,6 @@
 ## Config
 
-Create * *.env* * file in the root of the project as * *.env.example* * and add missed values. As port value you can use * *3000* *
+Create * .env*  file in the root of the project as * .env.example*  and add missed values. As port value you can use * 3000* 
 
 ### Run to install all dependencies
 ```bash
