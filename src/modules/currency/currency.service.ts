@@ -3,7 +3,7 @@ import {
   Injectable,
   ServiceUnavailableException,
 } from '@nestjs/common';
-import { API_BASE_URL } from '../shared/constants';
+import { getCurrencyApiUrl, getGuardianApiUrl } from '../shared/constants';
 import { CurrencyResponse, EstimateResponse } from './types';
 import { AppConfigService } from 'src/config/config.service';
 import { Token } from './types/enums';
@@ -18,25 +18,25 @@ export class CurrencyService {
   async getCurrencyHandler(token?: Token): Promise<CurrencyResponse> {
     try {
       if (!token) {
-        return;
+        return {
+          actionName: getCurrencyApiUrl(),
+        };
       }
 
       const {
         data: { value, from_currency },
       } = await this.httpService
-        .get<EstimateResponse>(
-          `${API_BASE_URL}/estimate?from_currency=EUR&from_amount=1&to_currency=${token}`,
-          {
-            headers: {
-              'x-api-key': this.config.apiKey,
-            },
+        .get<EstimateResponse>(getGuardianApiUrl(token), {
+          headers: {
+            'x-api-key': this.config.apiKey,
           },
-        )
+        })
         .toPromise();
 
       return {
         value,
         tokenName: from_currency,
+        actionName: getCurrencyApiUrl(),
       };
     } catch (err) {
       throw new ServiceUnavailableException(err.message);

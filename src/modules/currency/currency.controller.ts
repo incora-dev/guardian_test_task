@@ -10,8 +10,8 @@ export class CurrencyController {
   @Render('index')
   @Get()
   async getCurrencyPage(
-    @Query() query: FindCurrencyQueryDto,
+    @Query() { token }: FindCurrencyQueryDto,
   ): Promise<CurrencyResponse> {
-    return await this.service.getCurrencyHandler(query.token);
+    return await this.service.getCurrencyHandler(token);
   }
 }

@@ -10,7 +10,7 @@ import { CurrencyService } from '../currency.service';
 import { CurrencyResponse } from '../types';
 import { Token } from '../types/enums';
 import { AxiosResponse } from 'axios';
-import { API_BASE_URL } from '../../shared/constants';
+import { getCurrencyApiUrl, getGuardianApiUrl } from '../../shared/constants';
 import { of } from 'rxjs/internal/observable/of';
 
 describe('CurrencyService', () => {
@@ -37,6 +37,7 @@ describe('CurrencyService', () => {
     const result: CurrencyResponse = {
       tokenName: token,
       value: 2500,
+      actionName: getCurrencyApiUrl(),
     };
 
     const data: EstimateResponse = {
@@ -52,7 +53,7 @@ describe('CurrencyService', () => {
       data,
       headers: {},
       config: {
-        url: `${API_BASE_URL}/estimate?from_currency=EUR&from_amount=1&to_currency=${token}`,
+        url: getGuardianApiUrl(token),
       },
       status: 200,
       statusText: 'OK',

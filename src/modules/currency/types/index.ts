@@ -14,4 +14,5 @@ export interface EstimateResponse {
 export interface CurrencyResponse {
   value?: number;
   tokenName?: string;
+  actionName: string;
 }
