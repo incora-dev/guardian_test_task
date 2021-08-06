@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+  </head>
+  <body>
+    <p>
+      <form action="http://localhost:4000/currency?token=">
+      <select name="token" id="token">
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="ETH">ETH</option>
+            <option value="LTC">LTC</option>
+            <option value="XRP">XRP</option>
+          </select>
+        <input type="submit" value="Calculate" /> 
+        <span> {{tokenName}} price: {{value}}</span>
+      </form>
+    </p>
+  </body>
+</html>
