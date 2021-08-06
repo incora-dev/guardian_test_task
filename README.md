@@ -1,6 +1,7 @@
 ## Config
 
-Create *.env*  file in the root of the project as *.env.example*  and add missed values. As port value you can use *3000*
+Create *.env*  file in the root of the project as *.env.example*  and add missed values. As port value you can use *3000*.
+
 Open *http://localhost:4000/currency* in your browser after start server locally.
 
 ### Run to install all dependencies
